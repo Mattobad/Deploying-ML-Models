@@ -1,18 +1,17 @@
 <!doctype html>
 <html>
   <head>
-    <title>Movie Classification</title>
+    <title>Salary prediciton</title>
       <link rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
 
-    <h3>Your movie review:</h3>
-    <div>{{ content }}</div>
+    <h3>Your Salary prediction:</h3>
 
     <h3>Prediction:</h3>
-    <div>This movie review is <strong>{{ prediction }}</strong>
-    (probability: {{ probability }}%).</div>
+    <div> <strong>{{ prediction }}</strong> based upon your {{content[0]}} years of Experience
+    </div>
 
     <!-- <div id='button'>
       <form action="/thanks" method="post">

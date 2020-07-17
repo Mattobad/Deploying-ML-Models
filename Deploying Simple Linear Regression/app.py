@@ -19,7 +19,6 @@ lin_reg = joblib.load(open(os.path.join(cur_dir,'pkl_objects','lin_regssor_model
 #module for model prediction
 def lin_regression(data_in):
     y = lin_reg.predict(data_in)
-    #proba =np.max(lin_reg.predict_proba(data_in))
     return y
 
 
@@ -34,8 +33,6 @@ class ReviewForm(Form):
 
 @app.route('/')
 def index():
-    # form = HelloForm(request.form)
-    # return render_template('index.html', form=form)
     form = ReviewForm(request.form)
     return render_template('reviewform.html',form=form)
 
@@ -58,8 +55,8 @@ def results():
         feature_year.append(request.form['year'])
         feature_df = pd.DataFrame(feature_year)
         y= lin_regression(feature_df)
-        return render_template('results.html', content=feature_df, prediction=y)
-        #return render_template('results.html')
+        return render_template('results.html', content=feature_year, 
+                                prediction=round(y[0],2))
     
     return render_template('reviewform.html', form=form)
 
